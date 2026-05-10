@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ─────────────────────────────────────── */
+@layer base {
+  :root {
+    --font-display: "Inter", system-ui, sans-serif;
+    --font-body: "Inter", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg-primary text-text-primary font-body;
+  }
+
+  ::selection {
+    @apply bg-accent-primary/30 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-bg-secondary;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-accent-primary/40 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent-primary/60;
+  }
+}
+
+/* ── Components ──────────────────────────────── */
+@layer components {
+  .glass-card {
+    @apply bg-gradient-glass backdrop-blur-xl border border-glass-border rounded-2xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:border-accent-primary/20 hover:shadow-glow;
+  }
+
+  .neo-card {
+    @apply bg-bg-secondary rounded-2xl shadow-neo;
+  }
+
+  .glow-text {
+    @apply text-accent-primary drop-shadow-[0_0_12px_rgba(108,92,231,0.5)];
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-tertiary bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-accent-primary text-white font-medium rounded-xl
+           transition-all duration-300 hover:shadow-glow hover:bg-accent-primary/90
+           active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply px-6 py-3 border border-glass-border text-text-secondary font-medium rounded-xl
+           transition-all duration-300 hover:border-accent-primary/30 hover:text-text-primary
+           hover:bg-glass-hover active:scale-[0.98];
+  }
+
+  .tag-pill {
+    @apply px-3 py-1 text-xs font-medium rounded-full bg-accent-primary/10 text-accent-secondary
+           border border-accent-primary/20 transition-all duration-200
+           hover:bg-accent-primary/20 hover:border-accent-primary/40;
+  }
+
+  .ad-zone {
+    @apply border border-dashed border-glass-border rounded-xl flex items-center justify-center
+           text-text-muted text-sm bg-bg-secondary/50;
+  }
+
+  .stat-card {
+    @apply glass-card p-6 flex flex-col gap-2;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 bg-bg-secondary border border-glass-border rounded-xl
+           text-text-primary placeholder-text-muted focus:outline-none focus:border-accent-primary/50
+           focus:ring-1 focus:ring-accent-primary/30 transition-all duration-200;
+  }
+
+  .prose-blog {
+    @apply text-text-secondary leading-relaxed;
+  }
+  .prose-blog h2 {
+    @apply text-2xl font-bold text-text-primary mt-10 mb-4;
+  }
+  .prose-blog h3 {
+    @apply text-xl font-semibold text-text-primary mt-8 mb-3;
+  }
+  .prose-blog p {
+    @apply mb-6 text-lg leading-8;
+  }
+  .prose-blog a {
+    @apply text-accent-secondary underline decoration-accent-primary/30 hover:decoration-accent-primary transition-colors;
+  }
+  .prose-blog ul, .prose-blog ol {
+    @apply mb-6 pl-6;
+  }
+  .prose-blog li {
+    @apply mb-2 text-lg;
+  }
+  .prose-blog blockquote {
+    @apply border-l-4 border-accent-primary pl-6 italic text-text-secondary my-6;
+  }
+  .prose-blog code {
+    @apply bg-bg-tertiary px-2 py-0.5 rounded text-accent-secondary text-sm font-mono;
+  }
+  .prose-blog pre {
+    @apply bg-bg-tertiary p-4 rounded-xl overflow-x-auto mb-6;
+  }
+  .prose-blog img {
+    @apply rounded-xl my-8;
+  }
+
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.015;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  }
+}
+
+/* ── Utilities ───────────────────────────────── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .animate-in {
+    animation: slideUp 0.5s ease-out both;
+  }
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+}
